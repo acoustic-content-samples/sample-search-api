@@ -1,0 +1,101 @@
+# sample-search-api
+
+This sample shows some of the capabilities of IBM Watson Content Hub (WCH) search services. This is a technical sample intended for developers exploring the WCH APIs and data model. 
+
+This sample illustrates:
+- Using the search API and some of the powerful filtering capabilities.
+- Calling the authenticated search API both from client JavaScript and from Node.js.
+- Using the document data that is optionally returned as part of the search results.
+- A simple Node.js Express server that does the search as a "proxied" request. This way of accessing the WCH doesn't require the CORS enablement that's required for browser JS calls to WCH.
+
+There are two implementations of the search functionality, one using client-side JavaScript and the other using Node.js in a simple Express server. Both implementations are available as reusable functions. The client JavaScript version is in public/app.js; the Node.js implmentation is in lib/search.js.
+
+### Exploring the sample and the Watson Content Hub search API capabilities
+
+The WCH search service is built on the powerful SOLR search engine, and the search parameters offer a great number of useful features for searching and controlling the returned search results. In this sample you can select from a list of example search queries to try them out and to see the search parameters that are used. You can also edit the search parameters input to try your own search queries. The search results table displays some of the common fields you can use. At the top you can see how many rows were found. This is often different than the number of result entries, which is controlled with the "rows" parameter.
+
+Here is a screenshot showing a search for all the content items of type Article:
+
+![Alt text](/docs/search-api-screenshot.jpg?raw=true "Sample screenshot")
+
+You can click on the "JSON" button for any entry to see the complete JSON. You can also click on the "Document JSON" button to see the parsed contents of the "document" field that can optionally be returned with search results. See below for more information on the document field and on controlling which fields are returned in your results.
+
+The example queries in the drop-down list show a number of useful queries, shown in this screenshot.
+
+![Alt text](/docs/screenshot-dropdown.jpg?raw=true "Sample dropdown screenshot")
+
+####Selecting fields to return in results and using the "document" field
+
+One of the parameters for search is the "fl" parameter for selecting which fields are returned for each entry. In the sample, most of the example queries use the following list of fields:
+    &fl=name,document,id,classification,type,status
+
+The "document" field includes the complete referenced document, for example the complete content item or the complete asset JSON. By default it is returned as single string that you would need to parse as JSON. You can also add the ":[json]" option to have the document field automatically parsed as JSON, as in this example:
+    &fl=name,document:[json]
+
+####Search parameters used in the example queries
+
+Here are some of the parameters used in the example queries:
+- **fl** selects the set of fields to include in the results, for example &fl=name,document:[json]
+- **rows** specifies how many result entries to return, for example rows=20
+- **start** specifies the starting entry number to return, for example start=20
+- **sort** specifies a field to sort on, with asc or desc for ascending/descending, for example sort=lastModified%20desc
+- **fq=classification:** selects what kind(s) of artifacts to search for, for example to search for assets only, use  q=classification:asset
+- **fq=type:** searches for an item using a particular content type, for example fq=type:Article
+- **fq=status:** searches for artifacts matching draft/ready/retired status, for example fq=status:draft
+- **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
+- **fq=categoryLeaves:** searches for category values, for example fq=categoryLeaves:(travel OR auto)
+
+###Running the sample with the Node.js Express server
+
+#### 1. Download the files and install Node modules
+
+Download the project files into any folder on your workstation. Then run
+
+    npm install
+
+#### 2. Update the user credentials
+
+This sample uses hard-coded user name and password. For the client-side implementation, these are set in the public/app.js file. For the Node.js implementation they are set in main.js. Update the name and password values in those files.
+
+To avoid putting credentials in the source you could change the application to provide browser inputs for username and password. Also note that future Watson Content Hub releases will have support for "delivery" APIs that can be available without login.
+
+#### 3. Enable CORS support for your tenant
+
+To use the client JavaScript implementation of this sample you will need to enable CORS support for your tenant. To control the CORS enablement for Watson Content Hub, go to Hub set up -> General settings -> Security tab. After adding your domain (or "*" for any domain), be sure to click the Save button at the top right of the screen.
+
+#### 4. Start the Node.js application
+
+Run this command
+
+    node main.js
+
+#### 5. Access either of the two HTML pages from a browser
+
+- To run the version that calls WCH from client JS: http://localhost:3000/index.html
+- To run the version that calls WCH from a Node.js server: http://localhost:3000/index-nodejs-search.html
+
+### Running only the client JavaScript implementation
+
+#### 1. Download the files
+
+Download the application files (html, js, and css) from the 'public' folder into any folder on your workstation.
+
+#### 2. Update the user credentials
+
+Update the name and password values in the app.js file.
+
+#### 3. Enable CORS support for your tenant
+
+See above for how to do this.
+
+#### 4. Load index.html in a browser
+
+You can do this right from the file system in Firefox, Chrome, or Safari browsers. 
+
+###Resources
+
+API Explorer reference documentation: https://developer.ibm.com/api/view/id-618
+
+Watson Content Hub developer center: https://developer.ibm.com/wch/
+
+Watson Content Hub forum: https://developer.ibm.com/answers/smartspace/wch/
