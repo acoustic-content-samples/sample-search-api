@@ -16,7 +16,7 @@ function wchDoSearch(params, cb) {
         cb(searchResults);
     });
 }
-f
+
 const wchLoginApiGateway = "https://my.digitalexperience.ibm.com/api/";
 const wchLoginURL = wchLoginApiGateway + "login/v1/basicauth";
 const searchService = "authoring/v1/search";
