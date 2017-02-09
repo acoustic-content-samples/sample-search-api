@@ -17,11 +17,14 @@ function wchDoSearch(params, cb) {
     });
 }
 
-const wchLoginApiGateway = "https://my.digitalexperience.ibm.com/api/";
-const wchLoginURL = wchLoginApiGateway + "login/v1/basicauth";
+// Base URL for APIs - replace {Host} and {Tenant ID} using the values available 
+// from the "i" information icon at the top left of the WCH screen 
+const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
+
+const wchLoginURL = baseTenantUrl + "/login/v1/basicauth";
 const searchService = "authoring/v1/search";
+
 // Content Hub blueid username and password - replace these or add code to get these from inputs
-// This user is part of a tenant on staging
 const username = "[username]";
 const password = "[password]";
 
@@ -38,8 +41,6 @@ function search(user, pass, searchParams, cb) {
         }
     };
     $.ajax(requestOptions).done(function(data, textStatus, request) {
-        var baseTenantUrl = request.getResponseHeader('x-ibm-dx-tenant-base-url'); // use this to get tenant from the basicauth call
-        // console.log('baseTenantUrl: ', baseTenantUrl);
         var searchURL = baseTenantUrl + '/' + searchService + "?" + searchParams;
         var reqOptions = {
             xhrFields: {

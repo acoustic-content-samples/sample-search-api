@@ -16,6 +16,12 @@ var path = require('path');
 var wchSearch = require('./lib/search.js');
 var url = require('url');
 
+// Base URL for APIs - replace {Host} and {Tenant ID} using the values available 
+// from the "i" information icon at the top left of the WCH screen 
+const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
+const username = "[username]";
+const password = "[password]";
+
 /* serves all the static files in the public folder */
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,7 +34,7 @@ app.get('/api/search', function(request, response)
 
     // Call search function, passing in all the parameters
     // Currently this sample goes against staging system - the user below is part of a tenant there
-    wchSearch.search('[username]', '[password]', query, function cb(err, res, body)
+    wchSearch.search(baseTenantUrl, username, password, query, function cb(err, res, body)
     {
         if (err || (res && (res.statusCode !== 200) && (res.statusCode !== 302)))
         {

@@ -12,12 +12,15 @@
 
 var wchSearch = require('./lib/search.js');
 
-// This user is a member of a tenant on staging system
-var user = '[username]';
-var pass = '[password]';
+// Base URL for APIs - replace {Host} and {Tenant ID} using the values available 
+// from the "i" information icon at the top left of the WCH screen 
+const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
+const username = "[username]";
+const password = "[password]";
+
 var searchParams = 'q=*:*&wt=json&sort=name%20asc&rows=1&'; // get the first result, searching for everything
 
-wchSearch.search(user, pass, searchParams, function cb(err, res, body)
+wchSearch.search(baseTenantUrl, username, password, searchParams, function cb(err, res, body)
 {
     if (err || (res && (res.statusCode !== 200) && (res.statusCode !== 302)))
     {
