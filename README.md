@@ -53,11 +53,13 @@ Download the project files into any folder on your workstation. Then run
 
     npm install
 
-#### 2. Update the user credentials
+#### 2. Update the user credentials and baseTenantUrl
 
-This sample uses hard-coded user name and password. For the client-side implementation, these are set in the public/app.js file. For the Node.js implementation they are set in main.js. Update the name and password values in those files.
+This sample uses hard-coded user name, password, and baseTenantUrl values. For the client-side implementation, these are set in the public/app.js file. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password. Also note that future Watson Content Hub releases will have support for "delivery" APIs that can be available without login.
 
-To avoid putting credentials in the source you could change the application to provide browser inputs for username and password. Also note that future Watson Content Hub releases will have support for "delivery" APIs that can be available without login.
+The baseTenantUrl variables must also be set for your tenant. In the IBM Watson Content Hub user interface, click the "i" information icon at the top left of the screen next to where it says IBM Watson Content Hub. The pop-up window shows your host and tenant ID. Use this information to update the value of baseTenantUrl. For example it might look something like this:
+
+const baseTenantUrl = "https://my12.digitalexperience.ibm.com/api/12345678-9abc-def0-1234-56789abcdef0";
 
 #### 3. Enable CORS support for your tenant
 
@@ -82,7 +84,7 @@ Download the application files (html, js, and css) from the 'public' folder into
 
 #### 2. Update the user credentials
 
-Update the name and password values in the app.js file.
+Update the name, password, and baseTenantUrl values in the app.js file as described above.
 
 #### 3. Enable CORS support for your tenant
 
