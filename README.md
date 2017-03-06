@@ -1,14 +1,14 @@
 # sample-search-api
 
-This sample shows some of the capabilities of IBM Watson Content Hub (WCH) search services. This is a technical sample intended for developers exploring the WCH APIs and data model. 
+This sample shows some of the capabilities of IBM Watson Content Hub (WCH) search services. This is a technical sample intended for developers exploring the WCH APIs and data model.
 
 This sample illustrates:
-- Using the search API and some of the powerful filtering capabilities.
+- Using the Delivery and Authoring search APIs and some of the powerful filtering capabilities.
 - Calling the authenticated search API both from client JavaScript and from Node.js.
 - Using the document data that is optionally returned as part of the search results.
 - A simple Node.js Express server that does the search as a "proxied" request. This way of accessing the WCH doesn't require the CORS enablement that's required for browser JS calls to WCH.
 
-There are two implementations of the search functionality, one using client-side JavaScript and the other using Node.js in a simple Express server. Both implementations are available as reusable functions. The client JavaScript version is in public/app.js; the Node.js implmentation is in lib/search.js.
+There is a client-side sample using browser based JavaScript and a server-side implementations, using Node.js in a simple Express server. Both implementations are available as reusable functions. The client JavaScript version is in public/delivery-search.js and public/authoring-search.js.  The Node.js implmentation is in lib/search.js.
 
 ### Exploring the sample and the Watson Content Hub search API capabilities
 
@@ -53,9 +53,9 @@ Download the project files into any folder on your workstation. Then run
 
     npm install
 
-#### 2. Update the user credentials and baseTenantUrl
+#### 2. Update the baseTenantUrl and user credentials
 
-This sample uses hard-coded user name, password, and baseTenantUrl values. For the client-side implementation, these are set in the public/app.js file. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password. Also note that future Watson Content Hub releases will have support for "delivery" APIs that can be available without login.
+All of these samples require setting the base tenant API URL.  This authoring search samples also use hard-coded user name, and password values. For the client-side implementation, these are set in the public/delivery-search.js and authoring-search.js files. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password.
 
 The baseTenantUrl variables must also be set for your tenant. In the IBM Watson Content Hub user interface, click the "i" information icon at the top left of the screen next to where it says IBM Watson Content Hub. The pop-up window shows your host and tenant ID. Use this information to update the value of baseTenantUrl. For example it might look something like this:
 
@@ -71,12 +71,22 @@ Run this command
 
     node main.js
 
-#### 5. Access either of the two HTML pages from a browser
+#### 5. Access one of the following pages from a browser
 
-- To run the version that calls WCH from client JS: http://localhost:3000/index.html
-- To run the version that calls WCH from a Node.js server: http://localhost:3000/index-nodejs-search.html
+Sample application that uses client JS to call WCH Delivery Search:
+    http://localhost:3000/delivery-search.html
 
-### Running only the client JavaScript implementation
+Sample application that uses client JS to call WCH Authoring Search:
+    http://localhost:3000/authoring-search.html
+
+Sample application that calls WCH search via Node.js:
+    http://localhost:3000/index-nodejs-search.html
+
+The Delivery Search API can be called with any search parameters like this:
+    http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1&
+    
+The Authoring Search API can be called with any search parameters like this:
+    http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1&### Running only the client JavaScript implementation
 
 #### 1. Download the files
 
@@ -92,7 +102,7 @@ See above for how to do this.
 
 #### 4. Load index.html in a browser
 
-You can do this right from the file system in Firefox, Chrome, or Safari browsers. 
+You can do this right from the file system in Firefox, Chrome, or Safari browsers.
 
 ###Resources
 
