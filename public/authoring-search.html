@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Watson Content Hub Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="authoring-search.js"></script>
+    <script>
+    function updateInput(sel) {
+        var value = sel.value;
+        $('#sample-search-params').val(value);
+    }
+    </script>
+</head>
+
+<body class="container">
+    <div class="text-left" style="padding-bottom: 10px;">
+        <h2 class="color-a">Watson Content Hub Search API Sample</h2>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <label for="sample-search-params" class="col-form-label">Example Queries</label>
+        </div>
+        <div class="col-xs-8">
+            <div>
+                <select onchange="updateInput(this)" id="search-dropdown">
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content">All content items (defaults to 10 rows)</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&rows=5">All content items, 5 rows</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&rows=5&start=5">All content items, 5 rows starting at row 5</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&sort=name%20asc">All content items, sorted by name</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&sort=lastModified%20desc">All content items, sorted by lastModified</option>
+                    <option value="q=*:*&fl=name,id,status&fq=classification:content">All content items, only name, id, and status fields</option>
+                    <option value="q=*:*&fl=name,document:[json]&fq=classification:content">All content items, only name and document fields, with document
+                        parsed as JSON</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=status:draft">Content items with status "draft"</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=name:*city*">Content items search for "city" in the name field</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=type:%22Article%22&fq=classification:content">Content items with content type "Article"</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=categoryLeaves:travel">Content items with category leaf value "travel"</option>
+                    <option value="q=(*ian*)&defType=edismax&qf=text&fq=classification:content">Content items search for "ian" in text</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:(content OR asset)&fq=tags:(beach OR summer)">Content items or assets with tag "beach" or "summer"</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content-type">All content types</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:asset">All assets</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:asset&fq=location:*/dxdam/*">All managed assets</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:asset&fq=-location:*/dxdam/*">All web application assets</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:(taxonomy OR category)">All taxonomies and categories</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <p><a target="_blank" href="https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API#Authoringsearch">Authoring Search API Doc</a>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2">
+            <label for="sample-search-params" class="col-form-label">Search Parameters</label>
+        </div>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content"
+                id="sample-search-params">
+            </input>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-10">
+            <button onclick="doSearch();" class="btn btn-primary" data-toggle="modal">Search</button>
+        </div>
+    </div>
+    <div id="contentContainer">
+    </div>
+    <!-- Handlebars template for the content table -->
+    <script id="contentTemplate" type="text/x-handlebars-template">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th colspan="2">Num Found: {{searchResults.numFound}}</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Classification</th>
+                    <th>Content Type</th>
+                    <th>Status</th>
+                    <!-- <th>Last Modified</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                {{#each searchResults.documents}}
+                <tr>
+                    <td>
+                        <button onclick="showJson('{{@index}}');" class="btn btn-primary" data-toggle="modal">JSON</button>
+                    </td>
+                    <td>
+                        <button onclick="showDocument('{{@index}}');" class="btn btn-primary">Document JSON</button>
+                    </td>
+                    <td>{{name}}</td>
+                    <td>{{id}}</td>
+                    <td>{{classification}}</td>
+                    <td>{{type}}</td>
+                    <td>{{status}}</td>
+                    <!-- <td>{{lastModified}}</td> -->
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+    <script>
+    $(document).ready(function() {
+        doSearch();
+    });
+    // Button click handlers
+    $('#sample-search-params').keypress(function(e) {
+        if (e.which == 13) {
+            doSearch();
+            return false;
+        }
+    });
+    // The search results are in variable "displayedSearchResults"
+    function showJson(index) {
+        $("#jsonContent").html(JSON.stringify(displayedSearchResults.documents[
+                index], '',
+            4));
+        $("#myModal").modal();
+
+    }
+
+    function showDocument(index) {
+        var doc = displayedSearchResults.documents[index]['document'];
+        var docDisplay = 'no document';
+        if (!(doc === undefined)) {
+            docDisplay = JSON.stringify(JSON.parse(doc), '', 4);
+        }
+        $("#jsonContent").html(docDisplay);
+        $("#myModal").modal();
+
+    }
+
+    // The currently displayed results
+    var displayedSearchResults = {};
+
+    function doSearch() {
+        $("#contentContainer").html("");
+        var params = $('#sample-search-params').val();
+        console.log('params: ', params);
+        wchDoSearch(params, function(searchResults) {
+            // console.log('json: ', searchResults);
+            // update HTML from template
+            var innerDivScript = $("#contentTemplate").html();
+            var innerDivTemplate = Handlebars.compile(innerDivScript);
+            var compiledHTML = innerDivTemplate({
+                searchResults
+            });
+            $("#contentContainer").html(compiledHTML);
+
+            displayedSearchResults = searchResults;
+        });
+    }
+    </script>
+    <!-- Modal -->
+    <div id="myModal" class="modal" tabindex='-1' role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">JSON</h4>
+                </div>
+                <div class="modal-body">
+                    <pre id="jsonContent">
+                    </pre>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
