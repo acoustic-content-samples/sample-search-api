@@ -58,7 +58,6 @@ app.get('/api/delivery-search', function(request, response)
     // Call search function, passing in all the parameters
     wchSearch.deliverySearch(baseTenantUrl, query, function cb(err, res, body)
     {
-        console.log("got back: " + err + " " + res + " " + body);
         if (err || (res && (res.statusCode !== 200) && (res.statusCode !== 302)))
         {
             console.log("Error calling delivery search service: " + res.statusCode + ", " + err + ", " + body);
@@ -85,7 +84,7 @@ app.listen(3000, function()
     console.log('Sample application that calls WCH search via Node.js: ');
     console.log('    http://localhost:3000/index-nodejs-search.html');
     console.log('The Delivery Search API can be called with any search parameters like this:');
-    console.log('    http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1&');
+    console.log('    http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1');
     console.log('The Authoring Search API can be called with any search parameters like this:');
-    console.log('    http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1&');
+    console.log('    http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1');
 });

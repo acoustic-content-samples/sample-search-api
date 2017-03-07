@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  IBM Corp.
+ * Copyright IBM Corp. 2016, 2017
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -19,7 +19,7 @@ function wchDoSearch(params, cb) {
 
 // Base URL for APIs - replace {Host} and {Tenant ID} using the values available
 // from the "i" information icon at the top left of the WCH screen
-const baseTenantUrl = "https://{Host}/api/{Tenand ID}";
+const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
 const searchService = "/delivery/v1/search";
 
 // Generic search function - works with any user/password, search params
