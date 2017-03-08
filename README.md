@@ -73,20 +73,27 @@ Run this command
 
 #### 5. Access one of the following pages from a browser
 
-Sample application that uses client JS to call WCH Delivery Search:
-    http://localhost:3000/delivery-search.html
+- Sample application that uses client JS to call WCH Delivery Search:
 
-Sample application that uses client JS to call WCH Authoring Search:
-    http://localhost:3000/authoring-search.html
+http://localhost:3000/delivery-search.html
 
-Sample application that calls WCH search via Node.js:
-    http://localhost:3000/index-nodejs-search.html
+- Sample application that uses client JS to call WCH Authoring Search:
 
-The Delivery Search API can be called with any search parameters like this:
-    http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1&
+http://localhost:3000/authoring-search.html
+
+- Sample application that calls WCH search via Node.js:
+
+http://localhost:3000/index-nodejs-search.html
+
+- The Delivery Search API can be called with any search parameters like this:
+
+http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1
+
+- The Authoring Search API can be called with any search parameters like this:
+
+http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1
     
-The Authoring Search API can be called with any search parameters like this:
-    http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1&### Running only the client JavaScript implementation
+### Running only the client JavaScript implementation
 
 #### 1. Download the files
 
