@@ -17,9 +17,9 @@ function wchDoSearch(params, cb) {
     });
 }
 
-// Base URL for APIs - replace {Tenant Host} and {Tenant ID} using the values available
+// Base URL for APIs - replace {Host} and {Tenant ID} using the values available
 // from the "i" information icon at the top left of the WCH screen
-const baseTenantUrl = "https://{Tenant Host}/api/{Tenant ID}}";
+const baseTenantUrl = "https://{Host}/api/{Tenant ID}}";
 
 const wchLoginURL = baseTenantUrl + "/login/v1/basicauth";
 const searchService = "authoring/v1/search";
