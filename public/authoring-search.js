@@ -19,14 +19,14 @@ function wchDoSearch(params, cb) {
 
 // Base URL for APIs - replace {Host} and {Tenant ID} using the values available
 // from the "i" information icon at the top left of the WCH screen
-const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
+const baseTenantUrl = "https://my11-stage.digitalexperience.ibm.com/api/c9cccb4a-b105-4968-9e02-526cd321a672";
 
 const wchLoginURL = baseTenantUrl + "/login/v1/basicauth";
 const searchService = "authoring/v1/search";
 
 // Content Hub blueid username and password - replace these or add code to get these from inputs
-const username = "[username]";
-const password = "[password]";
+const username = "wchtools@isc4sb.com";
+const password = "p0rtal4u";
 
 // Generic search function - works with any user/password, search params
 function search(user, pass, searchParams, cb) {
