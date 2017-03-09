@@ -10,7 +10,7 @@
 
 "use strict";
 // Node.js search endpoint - see main.js and lib/search.js
-const searchService = "./api/search";
+const searchService = "./api/authoring-search";
 
 // Calls proxy search from Express server
 function wchDoSearch(params, cb)
