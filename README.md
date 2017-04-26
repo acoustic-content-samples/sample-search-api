@@ -24,7 +24,7 @@ The example queries in the drop-down list show a number of useful queries, shown
 
 ![Alt text](/docs/screenshot-dropdown.jpg?raw=true "Sample dropdown screenshot")
 
-####Selecting fields to return in results and using the "document" field
+#### Selecting fields to return in results and using the "document" field
 
 One of the parameters for search is the "fl" parameter for selecting which fields are returned for each entry. In the sample, most of the example queries use the following list of fields:
     &fl=name,document,id,classification,type,status
@@ -32,7 +32,7 @@ One of the parameters for search is the "fl" parameter for selecting which field
 The "document" field includes the complete referenced document, for example the complete content item or the complete asset JSON. By default it is returned as single string that you would need to parse as JSON. You can also add the ":[json]" option to have the document field automatically parsed as JSON, as in this example:
     &fl=name,document:[json]
 
-####Search parameters used in the example queries
+#### Search parameters used in the example queries
 
 Here are some of the parameters used in the example queries:
 - **fl** selects the set of fields to include in the results, for example &fl=name,document:[json]
@@ -45,7 +45,7 @@ Here are some of the parameters used in the example queries:
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
 - **fq=categoryLeaves:** searches for category values, for example fq=categoryLeaves:(travel OR auto)
 
-###Running the sample with the Node.js Express server
+### Running the sample with the Node.js Express server
 
 #### 1. Download the files and install Node modules
 
@@ -111,7 +111,7 @@ See above for how to do this.
 
 You can do this right from the file system in Firefox, Chrome, or Safari browsers.
 
-###Resources
+### Resources
 
 API Explorer reference documentation: https://developer.ibm.com/api/view/id-618
 
