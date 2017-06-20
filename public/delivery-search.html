@@ -37,13 +37,13 @@
                     <option value="q=*:*&fl=name,document:[json]&fq=classification:content">All content items, only name and document fields, with document
                         parsed as JSON</option>
                     <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=name:*city*">Content items search for "city" in the name field</option>
-                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=type:%22Article%22&fq=classification:content">Content items with content type "Article"</option>
+                    <option value="q=*:*&fl=name,document,id,classification,type,status&fq=type:(%22Sample Article%22 OR Article)&fq=classification:content">Content items with content type "Sample Article" OR "Article"</option>
                     <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content&fq=categoryLeaves:travel">Content items with category leaf value "travel"</option>
                     <option value="q=(*ian*)&defType=edismax&qf=text&fq=classification:content">Content items search for "ian" in text</option>
                     <option value="q=*:*&fl=*&fq=classification:(content OR asset)&fq=tags:(beach OR summer)">Content items or assets with tag "beach" or "summer"</option>
                     <option value="q=*:*&fl=*&fq=classification:asset">All assets</option>
-                    <option value="q=*:*&fl=*&fq=classification:asset&fq=location:*/dxdam/*">All managed assets</option>
-                    <option value="q=*:*&fl=*&fq=classification:asset&fq=-location:*/dxdam/*">All web application assets</option>
+                    <option value="q=*:*&fl=*&fq=classification:asset&fq=location:%5C/dxdam/*">All managed assets</option>
+                    <option value="q=*:*&fl=*&fq=classification:asset&fq=-location:%5C/dxdam/*">All web application assets</option>
                 </select>
             </div>
         </div>
