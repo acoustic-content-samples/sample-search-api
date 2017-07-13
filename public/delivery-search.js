@@ -17,8 +17,9 @@ function wchDoSearch(params, cb) {
     });
 }
 
-// Base URL for APIs - replace {Host} and {Tenant ID} using the values available
-// from the "i" information icon at the top left of the WCH screen
+// The API URL, along with the host and content hub id for your tenant, may be
+// found in the "Hub Information" dialog off the "User menu" in the authoring UI
+// Update the following URL with the value from that Hub Information dialog.
 const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
 const searchService = "/delivery/v1/search";
 
