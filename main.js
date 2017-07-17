@@ -16,8 +16,10 @@ var path = require('path');
 var wchSearch = require('./lib/search.js');
 var url = require('url');
 
-// Base URL for APIs. The API URL, along with the host and tenant content hub id
-// may be found in the "Hub Information" dialog off the "User menu" in the authoring UI.
+
+// The API URL, along with the host and content hub id for your tenant, may be
+// found in the "Hub Information" dialog off the "User menu" in the authoring UI
+// Update the following URL with the value from that Hub Information dialog.
 const baseTenantUrl = "https://{Host}/api/{Tenant ID}";
 const username = "[username]";
 const password = "[password]";
@@ -25,7 +27,7 @@ const password = "[password]";
 /* serves all the static files in the public folder */
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* For any requestso to /api/search, call the search function */
+/* For any requests to /api/search, call the search function */
 app.get('/api/authoring-search', function(request, response)
 {
     var url_parts = url.parse(request.url, false);
