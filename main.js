@@ -16,6 +16,7 @@ var path = require('path');
 var wchSearch = require('./lib/search.js');
 var url = require('url');
 
+
 // The API URL, along with the host and content hub id for your tenant, may be
 // found in the "Hub Information" dialog off the "User menu" in the authoring UI
 // Update the following URL with the value from that Hub Information dialog.

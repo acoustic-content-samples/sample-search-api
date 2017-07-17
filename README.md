@@ -24,7 +24,7 @@ The example queries in the drop-down list show a number of useful queries, shown
 
 ![Alt text](/docs/screenshot-dropdown.jpg?raw=true "Sample dropdown screenshot")
 
-####Selecting fields to return in results and using the "document" field
+#### Selecting fields to return in results and using the "document" field
 
 One of the parameters for search is the "fl" parameter for selecting which fields are returned for each entry. In the sample, most of the example queries use the following list of fields:
     &fl=name,document,id,classification,type,status
@@ -32,7 +32,7 @@ One of the parameters for search is the "fl" parameter for selecting which field
 The "document" field includes the complete referenced document, for example the complete content item or the complete asset JSON. By default it is returned as single string that you would need to parse as JSON. You can also add the ":[json]" option to have the document field automatically parsed as JSON, as in this example:
     &fl=name,document:[json]
 
-####Search parameters used in the example queries
+#### Search parameters used in the example queries
 
 Here are some of the parameters used in the example queries:
 - **fl** selects the set of fields to include in the results, for example &fl=name,document:[json]
@@ -45,7 +45,7 @@ Here are some of the parameters used in the example queries:
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
 - **fq=categoryLeaves:** searches for category values, for example fq=categoryLeaves:(travel OR auto)
 
-###Running the sample with the Node.js Express server
+### Running the sample with the Node.js Express server
 
 #### 1. Download the files and install Node modules
 
@@ -53,11 +53,11 @@ Download the project files into any folder on your workstation. Then run
 
     npm install
 
-#### 2. Update the baseTenantUrl and user credentials
+#### 2. Update the baseTenantUrl variable and user credentials
 
-All of these samples require setting the base tenant API URL.  This authoring search samples also use hard-coded user name, and password values. For the client-side implementation, these are set in the public/delivery-search.js and authoring-search.js files. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password.
+All of these samples require setting the base tenant API URL.  The authoring search samples require authentication and use hard-coded user name, and password values. For the client-side implementation, these are set in the public/delivery-search.js and authoring-search.js files. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password.
 
-The baseTenantUrl variables must also be set for your tenant. In the IBM Watson Content Hub user interface, click the "i" information icon at the top left of the screen next to where it says IBM Watson Content Hub. The pop-up window shows your host and tenant ID. Use this information to update the value of baseTenantUrl. For example it might look something like this:
+The baseTenantUrl variable must be set for your tenant. In the IBM Watson Content Hub user interface, open the user menu by clicking the drop-down arrow next to the user name on the top navigation bar. Select "Hub Information" from the user menu.  The pop-up window shows your Watson Content Hub tenant specific "API URL". Use this information to update the value of baseTenantUrl in the above mentioned JS files. For example it might look something like this:
 
 const baseTenantUrl = "https://my12.digitalexperience.ibm.com/api/12345678-9abc-def0-1234-56789abcdef0";
 
@@ -92,7 +92,7 @@ http://localhost:3000/api/delivery-search?q=*:*&wt=json&sort=name%20desc&rows=1
 - The Authoring Search API can be called with any search parameters like this:
 
 http://localhost:3000/api/authoring-search?q=*:*&wt=json&sort=name%20desc&rows=1
-    
+
 ### Running only the client JavaScript implementation
 
 #### 1. Download the files
@@ -111,7 +111,7 @@ See above for how to do this.
 
 You can do this right from the file system in Firefox, Chrome, or Safari browsers.
 
-###Resources
+### Resources
 
 API Explorer reference documentation: https://developer.ibm.com/api/view/id-618
 
