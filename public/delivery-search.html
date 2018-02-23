@@ -44,6 +44,9 @@
                     <option value="q=*:*&fl=*&fq=classification:asset">All assets</option>
                     <option value="q=*:*&fl=*&fq=classification:asset&fq=location:%5C/dxdam/*">All managed assets</option>
                     <option value="q=*:*&fl=*&fq=classification:asset&fq=-location:%5C/dxdam/*">All web application assets</option>
+                    <option value="q=*:*&fl=*&fq=classification:content&fq=type:Product&fq=string1:1234">All content items of type "Product" where the ProductId element (which has search key 'string1') has value "1234"</option>
+                    <option value="q=string1:*12*&fl=*&fq=classification:content&fq=type:Product">All content items of type "Product" where the ProductId element (which has search key 'string1') contains the value "12"</option>
+                    <option value="q=*:*&fl=*&fq=classification:content&fq=type:Event&fq=sortableDate1:[NOW TO *]&sort=sortableDate1 asc">All content items of type "Event" where the EventDate element (which has search key 'sortableDate1') is in the future, ordered by date ascending</option>
                 </select>
             </div>
         </div>
