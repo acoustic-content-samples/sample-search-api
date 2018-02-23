@@ -24,6 +24,8 @@ The example queries in the drop-down list show a number of useful queries, shown
 
 ![Alt text](/docs/screenshot-dropdown.jpg?raw=true "Sample dropdown screenshot")
 
+General documentation for SOLR queries can be found at https://lucene.apache.org/solr/guide/6_6/searching.html
+
 #### Selecting fields to return in results and using the "document" field
 
 One of the parameters for search is the "fl" parameter for selecting which fields are returned for each entry. In the sample, most of the example queries use the following list of fields:
@@ -35,11 +37,12 @@ The "document" field includes the complete referenced document, for example the 
 #### Search parameters used in the example queries
 
 Here are some of the parameters used in the example queries:
+- **q** specifies the search term
 - **fl** selects the set of fields to include in the results, for example &fl=name,document:[json]
 - **rows** specifies how many result entries to return, for example rows=20
 - **start** specifies the starting entry number to return, for example start=20
 - **sort** specifies a field to sort on, with asc or desc for ascending/descending, for example sort=lastModified%20desc
-- **fq=classification:** selects what kind(s) of artifacts to search for, for example to search for assets only, use  q=classification:asset
+- **fq=classification:** selects what kind(s) of artifacts to search for, for example to search for assets only, use  fq=classification:asset
 - **fq=type:** searches for an item using a particular content type, for example fq=type:Article
 - **fq=status:** searches for artifacts matching draft/ready/retired status, for example fq=status:draft
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
@@ -107,7 +110,7 @@ Update the name, password, and baseTenantUrl values in the app.js file as descri
 
 See above for how to do this.
 
-#### 4. Load index.html in a browser
+#### 4. Load delivery-search.html or authoring-search.html or index-nodejs-search.html in a browser
 
 You can do this right from the file system in Firefox, Chrome, or Safari browsers.
 

@@ -25,7 +25,7 @@
         <div class="col-xs-2">
             <label for="sample-search-params" class="col-form-label">Example Queries</label>
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-10">
             <div>
                 <select onchange="updateInput(this)" id="search-dropdown">
                     <option value="q=*:*&fl=name,document,id,classification,type,status&fq=classification:content">All content items (defaults to 10 rows)</option>
@@ -44,11 +44,11 @@
                     <option value="q=*:*&fl=*&fq=classification:asset">All assets</option>
                     <option value="q=*:*&fl=*&fq=classification:asset&fq=location:%5C/dxdam/*">All managed assets</option>
                     <option value="q=*:*&fl=*&fq=classification:asset&fq=-location:%5C/dxdam/*">All web application assets</option>
+                    <option value="q=*:*&fl=*&fq=classification:content&fq=type:Product&fq=string1:1234">Content items of type "Product" where the ProductId element (search key 'string1') has value "1234"</option>
+                    <option value="q=string1:*12*&fl=*&fq=classification:content&fq=type:Product">Content items of type "Product" where the ProductId element (search key 'string1') contains the value "12"</option>
+                    <option value="q=*:*&fl=*&fq=classification:content&fq=type:Event&fq=sortableDate1:[NOW TO *]&sort=sortableDate1 asc">Content items of type "Event" where the EventDate element (search key 'sortableDate1') is in the future, ordered ascending</option>
                 </select>
             </div>
-        </div>
-        <div class="col-xs-2">
-            <p><a target="_blank" href="https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API#doc">Delivery Search API Doc</a>
         </div>
     </div>
     <div class="form-group row">
@@ -63,8 +63,11 @@
     </div>
     <div class="form-group row">
         <div class="col-xs-2"></div>
-        <div class="col-xs-10">
+        <div class="col-xs-8">
             <button onclick="doSearch();" class="btn btn-primary" data-toggle="modal">Search</button>
+        </div>
+        <div class="col-xs-2">
+            <p><a target="_blank" href="https://developer.ibm.com/api/view/id-618:title-IBM_Watson_Content_Hub_API#doc">Delivery Search API Doc</a>
         </div>
     </div>
     <div id="contentContainer">
