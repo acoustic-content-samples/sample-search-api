@@ -48,6 +48,10 @@ Here are some of the parameters used in the example queries:
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
 - **fq=categoryLeaves:** searches for category values, for example fq=categoryLeaves:(travel OR auto)
 
+#### Search content by element
+
+The delivery search example shows how to search for content by the value of a particular element. The examples show searching for Products by a ProductId and searching for Events by the event date. In order for the Product examples to show results, a "Product" content type needs to exist in the target tenancy, containing an element named "ProductId" that is configured to have a search key of "string1". In order for the Event example to show results, an "Event" content type needs to exist in the target tenancy, containing an element named "EventDate" that is configured to have a search key of "sortableDate1". A video showing these steps in more detail is here: https://youtu.be/j0WdgTvJX7Y
+
 ### Running the sample with the Node.js Express server
 
 #### 1. Download the files and install Node modules
