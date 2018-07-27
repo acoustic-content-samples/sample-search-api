@@ -64,7 +64,7 @@ Download the project files into any folder on your workstation. Then run
 
 All of these samples require setting the base tenant API URL.  The authoring search samples require authentication and use hard-coded user name, and password values. For the client-side implementation, these are set in the public/delivery-search.js and authoring-search.js files. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password.
 
-The baseTenantUrl variable must be set for your tenant. In the IBM Watson Content Hub user interface, open the user menu by clicking the drop-down arrow next to the user name on the top navigation bar. Select "Hub Information" from the user menu.  The pop-up window shows your Watson Content Hub tenant specific "API URL". Use this information to update the value of baseTenantUrl in the above mentioned JS files. For example it might look something like this:
+The baseTenantUrl variable must be set for your tenant. In the IBM Watson Content Hub user interface, open the "Hub Information" dialog from the "About" flyout menu in the left navigation pane.  The pop-up window shows your Watson Content Hub tenant specific "API URL". Use this information to update the value of baseTenantUrl in the above mentioned JS files. For example it might look something like this:
 
 const baseTenantUrl = "https://my12.digitalexperience.ibm.com/api/12345678-9abc-def0-1234-56789abcdef0";
 
