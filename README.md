@@ -59,6 +59,11 @@ To search for categories under a given taxonomy, you can use a path query with w
 ````
   q=*:*&fl=id,name&fq=classification:(category)&fq=path:fq=path:(\/Sample\ Article\/*)
 ````
+See the following Solr documentation for more information on escaping characters in queries: https://lucene.apache.org/solr/guide/6_6/the-standard-query-parser.html#the-standard-query-parser
+
+### Related authoring artifacts
+
+Some of the queries in this search sample were built specifically for the authoring artifacts available with the sample-article-content package in the following repository: https://github.com/ibm-wch/sample-article-content
 
 ### Running the sample with the Node.js Express server
 
