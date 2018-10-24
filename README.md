@@ -52,6 +52,13 @@ Here are some of the parameters used in the example queries:
 
 The delivery search example shows how to search for content by the value of a particular element. The examples show searching for Products by a ProductId and searching for Events by the event date. In order for the Product examples to show results, a "Product" content type needs to exist in the target tenancy, containing an element named "ProductId" that is configured to have a search key of "string1". In order for the Event example to show results, an "Event" content type needs to exist in the target tenancy, containing an element named "EventDate" that is configured to have a search key of "sortableDate1". A video showing these steps in more detail is here: https://youtu.be/j0WdgTvJX7Y
 
+#### Search for categories under a given taxonomy
+
+To search for categories under a given taxonomy, you can use a path query with wildcards.   For example, to search for all categories under a "Sample Article" taxonomy, you can use a query like the following (where backslash is used to escape the forward slashes and the space in the path value, and where backslash itself may need to be url encoded as %5C in the actual URL sent to the service):
+
+{api url}/delivery/v1/search?q=*:*&fl=id,name&fq=classification:(category)&fq=path:fq=path:(\/Sample\ Article\/*)
+
+
 ### Running the sample with the Node.js Express server
 
 #### 1. Download the files and install Node modules
