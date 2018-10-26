@@ -47,6 +47,7 @@ Here are some of the parameters used in the example queries:
 - **fq=status:** searches for artifacts matching draft/ready/retired status, for example fq=status:draft
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
 - **fq=categoryLeaves:** searches for category values, for example fq=categoryLeaves:(travel OR auto)
+- **fq=classification:(category)&fq=path:(\\/Sample\ Article\\/*)** search for categories under a taxonomy named "Sample Article"
 
 #### Search content by element
 
@@ -57,7 +58,7 @@ The delivery search example shows how to search for content by the value of a pa
 To search for categories under a given taxonomy, you can use a path query with wildcards.   For example, to search for all categories under a "Sample Article" taxonomy, you can use a query like the following (where backslash is used to escape the forward slashes and the space in the path value, and where backslash itself may need to be url encoded as %5C in the actual URL sent to the service):
 
 ````
-  q=*:*&fl=id,name&fq=classification:(category)&fq=path:fq=path:(\/Sample\ Article\/*)
+  q=*:*&fl=id,name&fq=classification:(category)&fq=path:(\/Sample\ Article\/*)
 ````
 See the following Solr documentation for more information on escaping characters in queries: https://lucene.apache.org/solr/guide/6_6/the-standard-query-parser.html#the-standard-query-parser
 
