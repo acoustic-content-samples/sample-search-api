@@ -37,12 +37,14 @@ The "document" field includes the complete referenced document, for example the 
 #### Search parameters used in the example queries
 
 Here are some of the parameters used in the example queries:
-- **q** specifies the search term
-- **fl** selects the set of fields to include in the results, for example &fl=name,document:[json]
-- **rows** specifies how many result entries to return, for example rows=20
-- **start** specifies the starting entry number to return, for example start=20
+- **q** specifies the search term (query) in field:value format, for example q=\*:\* specifies a wildcard query matching all fields and values
+- **fl** selects the set of fields to include in the results, for example &fl=name,document:[json] or &fl=* (all fields)
+- **rows** specifies how many result entries to return, for example rows=20  (default == 10)
+- **start** specifies the starting entry number to return, for example start=20  (default == 0)
 - **sort** specifies a field to sort on, with asc or desc for ascending/descending, for example sort=lastModified%20desc
-- **fq=classification:** selects what kind(s) of artifacts to search for, for example to search for assets only, use  fq=classification:asset
+
+- **fq (filter queries)** further restrict the superset of query results returned from the primary query as described here:  https://lucene.apache.org/solr/guide/6_6/common-query-parameters.html#CommonQueryParameters-Thefq_FilterQuery_Parameter
+- **fq=classification:** selects what kind(s) of artifacts to search for (eg, asset, type, content), for example to search for assets only, use  fq=classification:asset
 - **fq=type:** searches for an item using a particular content type, for example fq=type:Article
 - **fq=status:** searches for artifacts matching draft/ready/retired status, for example fq=status:draft
 - **fq=tags:** searches for one or more tags, for example fq=tags:(beach OR summer)
