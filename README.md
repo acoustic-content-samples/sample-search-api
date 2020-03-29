@@ -1,6 +1,6 @@
 # sample-search-api
 
-This sample shows some of the capabilities of IBM Watson Content Hub (WCH) search services. This is a technical sample intended for developers exploring the WCH APIs and data model.
+This sample shows some of the capabilities of Acoustic Content (formerly Watson Content Hub or WCH) search services. This is a technical sample intended for developers exploring the Acoustic Content APIs and data model.
 
 This sample illustrates:
 - Using the Delivery and Authoring search APIs and some of the powerful filtering capabilities.
