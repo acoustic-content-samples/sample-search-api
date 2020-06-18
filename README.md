@@ -2,6 +2,8 @@
 
 This sample shows some of the capabilities of Acoustic Content (formerly Watson Content Hub or WCH) search services. This is a technical sample intended for developers exploring the Acoustic Content APIs and data model.
 
+This other sample has more options are should be used in most cases: https://github.com/acoustic-content-samples/sample-delivery-search-api
+
 This sample illustrates:
 - Using the Delivery and Authoring search APIs and some of the powerful filtering capabilities.
 - Calling the authenticated search API both from client JavaScript and from Node.js.
