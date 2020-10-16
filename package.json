@@ -1,7 +1,7 @@
 {
   "name": "sample-search",
   "version": "1.0.0",
-  "description": "Sample of Watson Content Hub search, with client JS and Node.js implementations.",
+  "description": "Sample of Content search, with client JS and Node.js implementations.",
   "main": "index.js",
   "author": "",
   "license": "Apache-2.0",

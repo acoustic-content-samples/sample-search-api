@@ -12,7 +12,7 @@ This sample illustrates:
 
 There is a client-side sample using browser based JavaScript and a server-side implementations, using Node.js in a simple Express server. Both implementations are available as reusable functions. The client JavaScript version is in public/delivery-search.js and public/authoring-search.js.  The Node.js implmentation is in lib/search.js.
 
-### Exploring the sample and the Watson Content Hub search API capabilities
+### Exploring the sample and the Acoustic Content search API capabilities
 
 The WCH search service is built on the powerful SOLR search engine, and the search parameters offer a great number of useful features for searching and controlling the returned search results. In this sample you can select from a list of example search queries to try them out and to see the search parameters that are used. You can also edit the search parameters input to try your own search queries. The search results table displays some of the common fields you can use. At the top you can see how many rows were found. This is often different than the number of result entries, which is controlled with the "rows" parameter.
 
@@ -82,7 +82,7 @@ Download the project files into any folder on your workstation. Then run
 
 All of these samples require setting the base tenant API URL.  The authoring search samples require authentication and use hard-coded user name, and password values. For the client-side implementation, these are set in the public/delivery-search.js and authoring-search.js files. For the Node.js implementation they are set in main.js. Update the name and password values in those files. To avoid putting credentials in the source you could change the application to provide browser inputs for username and password.
 
-The baseTenantUrl variable must be set for your tenant. In the IBM Watson Content Hub user interface, open the "Hub Information" dialog from the "About" flyout menu in the left navigation pane.  The pop-up window shows your Watson Content Hub tenant specific "API URL". Use this information to update the value of baseTenantUrl in the above mentioned JS files. For example it might look something like this:
+The baseTenantUrl variable must be set for your tenant. In the Acoustic Content user interface, open the "Hub Information" dialog from the "About" flyout menu in the left navigation pane.  The pop-up window shows your Watson Content Hub tenant specific "API URL". Use this information to update the value of baseTenantUrl in the above mentioned JS files. For example it might look something like this:
 
 const baseTenantUrl = "https://content-eu-4.content-cms.com/api/12345678-9abc-def0-1234-56789abcdef0";
 
